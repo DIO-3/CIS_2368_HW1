@@ -4,11 +4,12 @@ from datetime import date
 # You will see this refenced again later when we use the acutal date command when we check the validity of the tickets 
 
 import mysql.connector
+# In theme of mysql.connector library, we did use GPT to get an understanding how we bridge the gap between mysql to this python file as well as
+# the feuatures within the library such as .cursor() .execute() .fetchone() and etc. Specifcaly I asked GPT 
+# "How am i suppose to bridge the gap between my DB written on mysql work bench that is connected to a AWS account to connect to my local python script?" and 
+# I did asked "Give me a overview on the certain commands and feaautures of the library, be sure to inlcude logic and sytnax"
 
 # =========== DB INFO ===========
-# In this section (here and in defining connect() ), we did use GPT to get an understanding how we bridge the gap between mysql to this python file since i don't 
-# have great knoweldge over the topic. Specifcaly I asked GPT "How am i suppose to bridge the gap between my DB written on mysql 
-# work bench that is connected to a AWS account to connect to my local python script?"
 HOST = "cis2368spring26.cxxnotgoq7im.us-east-1.rds.amazonaws.com"
 USER = "admin"
 PASSWORD = "quxZyg-huzgis-jygju7"
@@ -70,7 +71,7 @@ def main():
 
         elif choice == "cn":
             ticketno = get_ticket_no()
-            cur = db.cursor()
+            cur = db.cursor() 
             cur.execute("SELECT ticketno FROM tickets WHERE ticketno = %s", (ticketno,))
             row = cur.fetchone()
             cur.close()
